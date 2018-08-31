@@ -1,13 +1,21 @@
 <?php
  
+/* 
+Autor: Zahid Guerrero
+Proyecto Agenda PHP
+Agosto 2018
+ */
 
+ //ACTUALIZA EL VENTO
  require('./conector.php');
 
  session_start();
 
- 
+ //valida sesion de usuario
  if (isset($_SESSION['username'])) {
    $con = new ConectorBD();
+
+   //si se conecta...
    if ($con->initConexion()=='OK') {
      
      $data['id_evento'] = "'".$_POST['id']."'";
@@ -16,6 +24,7 @@
      //$data['horaInicio'] = "'".$_POST['start_hour']."'";
      //$data['horaFin'] = "'".$_POST['end_hour']."'";
 
+     //valida actualizacion de registro
      if ($con->actualizarRegistro('eventos', $data, "id_evento=".$_POST['id'])) {
        $response['msg']= 'OK';
      }else {
@@ -29,7 +38,7 @@
    $response['msg']= 'No se ha iniciado una sesión';
  }
 
-
+//regresa respuesta como JSON
 echo json_encode($response,JSON_FORCE_OBJECT);
 
 

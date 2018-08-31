@@ -1,5 +1,13 @@
 <?php
-  
+
+/* 
+Autor: Zahid Guerrero
+Proyecto Agenda PHP
+Agosto 2018
+ */
+
+//OBTIENE LOS EVENTOS POR USUARIO
+
 //carga conexion y comienza sesion de usuario
   require('./conector.php');
   session_start();
@@ -9,7 +17,7 @@
     $con = new ConectorBD();
     if ($con->initConexion()=='OK') {
       
-      //crea el objeto array...
+    
       $eventos = array();
       
       //obtiene ID de usuario

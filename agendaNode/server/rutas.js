@@ -1,7 +1,17 @@
+
+/* 
+Autor Zahid Guerrero
+Agosto 2018
+Proyecto agenda con NodeJS
+ */
+
+
+//importar librerias
 const express = require('express')
 const Router = express.Router()
 const Eventos = require('./model.js')
 const Usuarios = require('./modelUsuario.js')
+
 
 //Obtener todos los eventos
 Router.get('/eventos/all', function(req, res) {
@@ -14,33 +24,28 @@ Router.get('/eventos/all', function(req, res) {
     })
 })
 
-// Obtener un usuario por su codigo
+// Obtener un usuario por email y password
 Router.post('/login', function(req, res) {
     
     let user = req.body.user
     let pass = req.body.pass
 
-    //console.log(user + '' + pass)
-    //console.log('Validado', req.params.user, req.params.pass)
-    
    Usuarios.findOne({usuario: user, password: pass}).exec(function(err, doc){
         if (err) {
             res.status(500)
             res.json(err)
         } else {
           if (doc) {
-             //if (doc.password == pass) {
                 
                 res.send("Validado")
-             //} else {
-                //res.send("Password no valido")
-             //}
-          } else {
+
+            } else {
              res.send("Usuario o password incorrectos!!")
           }
         }
     })
 })
+
 
 // Agregar un evento
 Router.post('/eventos/new', function(req, res) {
@@ -49,7 +54,6 @@ Router.post('/eventos/new', function(req, res) {
         title: req.body.title,
         start: req.body.start,
         end: req.body.end,
-        //allDay: req.body.allDay,
         user: req.body.user
     })
 
@@ -64,6 +68,7 @@ Router.post('/eventos/new', function(req, res) {
         }
     })
 })
+
 
 // Modificar un evento
 Router.post('/eventos/update', function(req, res) {
@@ -88,6 +93,7 @@ Router.post('/eventos/update', function(req, res) {
    res.send(e.message)
 }
 })
+
 
 // Eliminar un evento por su id
 Router.post('/eventos/delete/:id', function(req, res) {

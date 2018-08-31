@@ -1,6 +1,12 @@
 <?php
 
+/* 
+Autor: Zahid Guerrero
+Proyecto Agenda PHP
+Agosto 2018
+ */
 
+ // ELIMINA EL EVENTO SELECCIONADO
 require('./conector.php');
 
 session_start();

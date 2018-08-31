@@ -9,6 +9,7 @@
     private $conexion;
     private $nombre_db='agenda';
 
+    //inicia conexion
     function initConexion(){
       $this->conexion = new mysqli($this->host, $this->user, $this->password,$this->nombre_db);
       if ($this->conexion->connect_error) {
@@ -18,6 +19,7 @@
       }
     }
 
+    //crea nueva tabla
     function newTable($nombre_tbl, $campos){
       $sql = 'CREATE TABLE '.$nombre_tbl.' (';
       $length_array = count($campos);
@@ -34,29 +36,35 @@
       return $this->ejecutarQuery($sql);
     }
 
+    //muestra datos del usuario
     function datosUsuario($email){
       $sql="SELECT * FROM usuarios WHERE email='".$email."'";
       return $this->ejecutarQuery($sql);
     }
 
+    //ejecuta la consulta
     function ejecutarQuery($query){
       return $this->conexion->query($query);
     }
 
+    //cierra la conexion
     function cerrarConexion(){
       $this->conexion->close();
     }
 
+    //crea nueva restriccion de usuarios
     function nuevaRestriccion($tabla, $restriccion){
       $sql = 'ALTER TABLE '.$tabla.' '.$restriccion;
       return $this->ejecutarQuery($sql);
     }
 
+    //crea nueva relacion de llaves en dos tablas
     function nuevaRelacion($from_tbl, $to_tbl, $from_field, $to_field){
       $sql = 'ALTER TABLE '.$from_tbl.' ADD FOREIGN KEY ('.$from_field.') REFERENCES '.$to_tbl.'('.$to_field.');';
       return $this->ejecutarQuery($sql);
     }
 
+    //inserta datos en una tabla
     function insertData($tabla, $data){
       $sql = 'INSERT INTO '.$tabla.' (';
       $i = 1;
@@ -81,10 +89,12 @@
 
     }
 
+    //realiza la conexion a la BD
     function getConexion(){
       return $this->conexion;
     }
 
+    //actualiza registro
     function actualizarRegistro($tabla, $data, $condicion){
       $sql = 'UPDATE '.$tabla.' SET ';
       $i=1;
@@ -98,11 +108,13 @@
       return $this->ejecutarQuery($sql);
     }
 
+    //elimina registro
     function eliminarRegistro($tabla, $condicion){
       $sql = "DELETE FROM ".$tabla." WHERE ".$condicion.";";
       return $this->ejecutarQuery($sql);
     }
 
+    //crea una consulta 
     function consultar($tablas, $campos, $condicion = ""){
       $sql = "SELECT ";
       $ultima_key = end(array_keys($campos));
@@ -131,6 +143,7 @@
     }
 
 
+    //obtiene datos del usuario
     function getUser($user){
       $sql = "SELECT id_usuario
               FROM usuarios
@@ -138,14 +151,13 @@
       return $this->ejecutarQuery($sql);
     }
 
+    //obtiene datos de los eventos por usuario
     function getEventosUser($user_id){
       $sql = "SELECT * FROM eventos 
                     WHERE id_usuario = ".$user_id.";";
 
       return $this->ejecutarQuery($sql);
     }
-
-
 
 
   }

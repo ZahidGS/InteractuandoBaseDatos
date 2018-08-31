@@ -1,5 +1,13 @@
 <?php
 
+/* 
+Autor: Zahid Guerrero
+Proyecto Agenda PHP
+Agosto 2018
+ */
+
+ // SE CREAN TRES USUARIOS
+
 require_once "conexion.php";
 
 $obj=new conectar();

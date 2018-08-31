@@ -1,10 +1,20 @@
+
+<!--  
+Autor: Zahid Guerrero
+Proyecto Agenda PHP
+Agosto 2018
+
+ -->
+
 <?php
 
+//importar conector
 require('./conector.php');
 
+//instancia conector
 $con = new ConectorBD();
 
-
+//revisa conexion y valida usuario
 if ($con->initConexion()=='OK') {
 
   

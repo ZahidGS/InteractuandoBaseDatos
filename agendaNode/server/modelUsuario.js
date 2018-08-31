@@ -1,6 +1,14 @@
+/* 
+Autor Zahid Guerrero
+Agosto 2018
+Proyecto agenda con NodeJS
+ */
+
+//importar librerias
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+//crear schema usuario
 let UsuarioSchema = new Schema({
     usuario: { type: String},
     nombre: { type: String},
@@ -8,6 +16,6 @@ let UsuarioSchema = new Schema({
     password: { type: String}
  })
  
-
-let Usuario = mongoose.model('Usuarios', UsuarioSchema)
+//disposicion de schema usuario
+let Usuario = mongoose.model('usuarios', UsuarioSchema)
 module.exports = Usuario
