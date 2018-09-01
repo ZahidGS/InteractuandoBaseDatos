@@ -52,7 +52,7 @@ Agosto 2018
  echo json_encode($response,JSON_FORCE_OBJECT);
 
 
-
+ $con->cerrarConexion();
 
 
  ?>

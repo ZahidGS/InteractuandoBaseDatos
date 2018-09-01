@@ -11,7 +11,7 @@ class EventsManager {
         let url = '../server/getEvents.php'
         $.ajax({
           url: url,
-          dataType: "json",
+          dataType: "JSON",
           cache: false,
           processData: false,
           contentType: false,
@@ -111,18 +111,16 @@ class EventsManager {
               })
             }
 
-
-
-
           }else {
             alert(data.msg)
           }
-        },
-        error: function(){
+        }
+/*         error: function(){
           alert("error en la comunicación con el servidor");
         }
-      })
+ */      })
 
+      location.reload();
     }
 
     eliminarEvento(event, jsEvent){
@@ -150,6 +148,9 @@ class EventsManager {
       })
       $('.delete-btn').find('img').attr('src', "img/trash.png");
       $('.delete-btn').css('background-color', '#8B0913')
+
+      location.reload();
+
     }
 
     actualizarEvento(evento) {
@@ -193,6 +194,9 @@ class EventsManager {
             alert("error en la comunicación con el servidor");
           }
         })
+
+        location.reload();
+
     }
 
 }

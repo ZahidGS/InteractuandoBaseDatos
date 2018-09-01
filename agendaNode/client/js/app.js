@@ -109,7 +109,7 @@ class EventManager {
             }
         })
         
-        $('.calendario').fullCalendar('renderEvent', ev)
+        //$('.calendario').fullCalendar('renderEvent', ev)
 
     }
 

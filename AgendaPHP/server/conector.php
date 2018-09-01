@@ -1,5 +1,10 @@
 <?php
 
+/* 
+Autor: Zahid Guerrero
+Proyecto Agenda PHP
+Agosto 2018
+ */
 
   class ConectorBD
   {
@@ -11,7 +16,7 @@
 
     //inicia conexion
     function initConexion(){
-      $this->conexion = new mysqli($this->host, $this->user, $this->password,$this->nombre_db);
+      $this->conexion = new mysqli($this->host, $this->user, $this->password, $this->nombre_db);
       if ($this->conexion->connect_error) {
         return "Error:" . $this->conexion->connect_error;
       }else {

@@ -50,6 +50,7 @@ Agosto 2018
     $response['msg']= 'No se ha iniciado una sesión';
   }
 
+  $con->cerrarConexion();
 
 
  ?>

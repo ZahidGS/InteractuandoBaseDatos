@@ -15,7 +15,7 @@ Agosto 2018
  if (isset($_SESSION['username'])) {
    $con = new ConectorBD();
 
-   //si se conecta...
+   //si se conecta... carga los datos del post y ejecuta la funcion para actualizar registro
    if ($con->initConexion()=='OK') {
      
      $data['id_evento'] = "'".$_POST['id']."'";
@@ -42,6 +42,7 @@ Agosto 2018
 echo json_encode($response,JSON_FORCE_OBJECT);
 
 
+$con->cerrarConexion();
 
 
  ?>
